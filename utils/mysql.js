@@ -4,7 +4,7 @@ var dbconfig = require('../config/config.json');
 var dbpool = mysql.createPool({
                 host            : dbconfig.dbip,
                 user            : dbconfig.dbuser,
-                password        : dbconfig.dbpassword,
+                password        : dbconfig.dbpass,
                 database        : dbconfig.dbname,
                 connectTimeout  : 20000
             });
