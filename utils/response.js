@@ -9,6 +9,11 @@ const resp = {
         code : "01",
         desc : "No record"
     },
+    _noinput : {
+        resp : 1,
+        code : "02",
+        desc : "No required field provided"
+    },
     _fail : {
         resp : 1,
         code : "03",

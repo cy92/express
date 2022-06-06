@@ -1,7 +1,7 @@
-var mysql = require("mysql");
-var dbconfig = require('../config/config.json');
+let mysql = require("mysql");
+let dbconfig = require('../config/config.json');
 
-var dbpool = mysql.createPool({
+let dbpool = mysql.createPool({
                 host            : dbconfig.dbip,
                 user            : dbconfig.dbuser,
                 password        : dbconfig.dbpass,

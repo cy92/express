@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "c84e924f-cc58-41e4-af48-7eeac20f3e2f",
+		"name": "Sample test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3655812"
+	},
+	"item": [
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "Get Employee List",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lastName\" : \"\",\r\n    \"firstName\" : \"\",\r\n    \"jobTitle\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{Host}}:{{Port}}/office/getEmployeeList",
+							"protocol": "http",
+							"host": [
+								"{{Host}}"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"office",
+								"getEmployeeList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Employee Detail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeNumber\" : \"1002\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{Host}}:{{Port}}/office/getEmployeeDetail",
+							"protocol": "http",
+							"host": [
+								"{{Host}}"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"office",
+								"getEmployeeDetail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Employee Reporting From",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeNumber\" : \"1143\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{Host}}:{{Port}}/office/getEmployeeReporting",
+							"protocol": "http",
+							"host": [
+								"{{Host}}"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"office",
+								"getEmployeeReporting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Office List",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"city\" : \"\",\r\n    \"state\" : \"\",\r\n    \"country\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{Host}}:{{Port}}/office/getOfficeList",
+							"protocol": "http",
+							"host": [
+								"{{Host}}"
+							],
+							"port": "{{Port}}",
+							"path": [
+								"office",
+								"getOfficeList"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Host",
+			"value": "127.0.0.1",
+			"type": "string"
+		},
+		{
+			"key": "Port",
+			"value": "3000",
+			"type": "string"
+		}
+	]
+}
