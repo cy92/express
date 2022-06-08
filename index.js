@@ -23,6 +23,7 @@ app.use('/', (req, res, next)=>{
 
 app.use('/office', require("./service/office"));
 app.use('/product', require("./service/product"));
+app.use('/customer', require('./service/customer'));
 
 app.listen(port, ()=>{
     console.log("Express server started with port : " +port);
