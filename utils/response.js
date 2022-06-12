@@ -14,9 +14,14 @@ const resp = {
         code : "02",
         desc : "No required field provided"
     },
-    _fail : {
+    _invinput : {
         resp : 1,
         code : "03",
+        desc : "Invalid input provided"
+    },
+    _fail : {
+        resp : 1,
+        code : "04",
         desc : "API error"
     },
     _programerr : {

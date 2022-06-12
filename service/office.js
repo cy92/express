@@ -29,14 +29,8 @@ router.post("/getEmployeeList", (req, res) => {
             console.log(err);
         }
         else{
-            if (result.length > 0 ){
-                resp = rsp._success;
-                resp.data = result;
-            }
-            else{
-                resp = rsp._norecord;
-                resp.data = [];
-            }
+            resp = (result.length > 0) ? rsp._success : rsp._norecord;
+            resp.data = result;
         }
 
         res.send(resp);
@@ -55,14 +49,8 @@ router.post("/getEmployeeDetail", (req, res) => {
                 console.log(err);
             }
             else{
-                if (result.length > 0 ){
-                    resp = rsp._success;
-                    resp.data = result;
-                }
-                else{
-                    resp = rsp._norecord;
-                    resp.data = [];
-                }
+                resp = (result.length > 0) ? rsp._success : rsp._norecord;
+                resp.data = result;
             }
             res.send(resp);
         });
@@ -84,14 +72,8 @@ router.post("/getEmployeeReporting", (req, res) => {
                 console.log(err);
             }
             else{
-                if (result.length > 0 ){
-                    resp = rsp._success;
-                    resp.data = result;
-                }
-                else{
-                    resp = rsp._norecord;
-                    resp.data = [];
-                }
+                resp = (result.length > 0) ? rsp._success : rsp._norecord;
+                resp.data = result;
             }
             res.send(resp);
         });
@@ -121,7 +103,6 @@ router.post("/getOfficeList", (req, res) => {
             }
     }
     sql += " order by 1";
-    console.log(sql);
     dbpool.query(sql, (err, result, fields)=>{
         let resp = {};
         if (err){
@@ -129,14 +110,8 @@ router.post("/getOfficeList", (req, res) => {
             console.log(err);
         }
         else{
-            if (result.length > 0){
-                resp = rsp._success;
-                resp.data = result;
-            }
-            else{
-                resp = rsp._norecord;
-                resp.data = [];
-            }
+            resp = (result.length > 0) ? rsp._success : rsp._norecord;
+            resp.data = result;
         }
 
         res.send(resp);

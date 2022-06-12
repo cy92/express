@@ -6,7 +6,8 @@ let dbpool = mysql.createPool({
                 user            : dbconfig.dbuser,
                 password        : dbconfig.dbpass,
                 database        : dbconfig.dbname,
-                connectTimeout  : 20000
+                connectTimeout  : 20000,
+                connectionLimit : 10
             });
 
 

@@ -29,14 +29,8 @@ router.post("/getProductList", (req, res) =>{
             console.log(err);
         }
         else{
-            if (result.length > 0 ){
-                resp = rsp._success;
-                resp.data = result;
-            }
-            else{
-                resp = rsp._norecord;
-                resp.data = [];
-            }
+            resp = (result.length > 0) ? rsp._success : rsp._norecord;
+            resp.data = result;
         }
 
         res.send(resp);
@@ -54,14 +48,8 @@ router.post("/getProductDetail", (req, res) =>{
                 console.log(err);
             }
             else{
-                if (result.length > 0 ){
-                    resp = rsp._success;
-                    resp.data = result;
-                }
-                else{
-                    resp = rsp._norecord;
-                    resp.data = [];
-                }
+                resp = (result.length > 0) ? rsp._success : rsp._norecord;
+                resp.data = result;
             }
             res.send(resp);
         });

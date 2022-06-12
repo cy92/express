@@ -26,12 +26,7 @@ router.post("/getCustomerList", (req , res) =>{
             resp = rsp._fail;
         }
         else{
-            if (result.length > 0){
-                resp = rsp._success;
-            }
-            else{
-                resp = rsp._norecord;
-            }
+            resp = (result.length > 0) ? rsp._success : rsp._norecord;
             resp.data = result;
         }
         res.send(resp);
@@ -49,12 +44,7 @@ router.post("/getCustomerDetail", (req , res) =>{
                 resp = rsp._fail;
             }
             else{
-                if (result.length > 0){
-                    resp = rsp._success;
-                }
-               else{
-                resp = rsp._norecord;
-               }
+                resp = (result.length > 0) ? rsp._success : rsp._norecord;
                 resp.data = result;
             }
 
