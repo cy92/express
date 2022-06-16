@@ -1,10 +1,10 @@
 const { query } = require('express');
 const express = require('express');
-const route = express.Router();
+const router = express.Router();
 const dbpool = require('../utils/mysql');
 const rsp = require('../utils/response');
 
-route.post("/getOrderList", (req, res) =>{
+router.post("/getOrderList", (req, res) =>{
     let sql = "Select a.orderNumber, DATE_FORMAT(a.orderDate, '%Y-%m-%d') as orderDate, DATE_FORMAT(a.requiredDate, '%Y-%m-%d') as requiredDate, DATE_FORMAT(a.shippedDate, '%Y-%m-%d') as shippedDate, a.status, b.customerName from orders a inner join customers b on a.customerNumber = b.customerNumber ";
     let resp = {}
     if (req.body){
@@ -36,7 +36,7 @@ route.post("/getOrderList", (req, res) =>{
     });
 });
 
-route.post("/getCustomerOrderList", (req, res) =>{
+router.post("/getCustomerOrderList", (req, res) =>{
     let sql = "Select orderNumber, DATE_FORMAT(orderDate, '%Y-%m-%d') as orderDate, DATE_FORMAT(requiredDate, '%Y-%m-%d') as requiredDate, DATE_FORMAT(shippedDate, '%Y-%m-%d') as shippedDate, status, customerNumber from orders ";
     let resp = {}
 
@@ -60,7 +60,7 @@ route.post("/getCustomerOrderList", (req, res) =>{
     }
 });
 
-route.post("/getOrderDetail", (req, res) =>{
+router.post("/getOrderDetail", (req, res) =>{
     let sql = "Select a.orderNumber, a.orderDate, a.requiredDate, a.shippedDate, a.status, b.productCode, b.quantityOrdered, b.priceEach, c.productName, c.productVendor from orders a inner join orderdetails b on a.orderNumber = b.orderNumber inner join products c on b.productCode = c.productCode ";
     if (req.body.orderNumber && req.body.orderNumber.trim() != "" ){
         sql += " Where a.orderNumber = " + req.body.orderNumber.trim() + " order by a.orderDate desc ";
@@ -82,4 +82,9 @@ route.post("/getOrderDetail", (req, res) =>{
     }
 });
 
-module.exports = route;
+router.use("/", (req, res, next)=>{
+    //route not found
+    next();
+});
+
+module.exports = router;

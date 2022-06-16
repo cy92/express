@@ -10,7 +10,22 @@ fl.eventLog = ()=>{
 }
 
 fl.trxLog = (req)=>{
+    let id = req.id;
+    let dnow = new Date();
+    let y = dnow.getFullYear().toString();
+    let m = (dnow.getMonth() + 1).toString().padStart(2, "0");
+    let d = dnow.getDate().toString().padStart(2, "0");
+    let nh = dnow.getHours();
+    let nm = dnow.getMinutes().toString().padStart(2, "0");
+    let ns = dnow.getSeconds().toString().padStart(2, "0");
+    let now = y+"/"+m+"/"+ d + " " + nh + ":" +nm + ":" + ns;
+    let url = req.url;
+    let method = req.method;
+    let client = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    client = (client.includes("127.0.0.1"))? "127.0.0.1": client;
 
+    let logstr = now+","+method+","+url+","+client;
+    writeLog("TR", logstr);
 }
 
 fl.rqLog = ()=>{
@@ -21,12 +36,13 @@ fl.rsLog = ()=>{
 
 }
 
-fl.erLog = ()=>{
-
+fl.erLog = (err, req, res, next)=>{
+    console.log(123);
+    next(err);
 }
 
 fl.checkFile = ()=>{
-    console.log(Date.now());
+    console.log("Start logger : ", Date.now());
     date = getToday();
     fileList.forEach((ele)=>{
         let temp = ele+"_"+date;
@@ -39,7 +55,7 @@ fl.checkFile = ()=>{
         }
     });
     listFile();
-    console.log(Date.now());
+    console.log("End checking:", Date.now());
 }
 
 function getToday(){
@@ -77,6 +93,15 @@ function listFile(){
                 });
             }
         });
+    });
+}
+
+function writeLog(logname, input){
+    let wrfile = logname+"_"+date;
+    fs.appendFile('./log/'+wrfile+".txt", input+"\n", (err)=>{
+        if (err){
+            console.log("Write file error : " + err);
+        }
     });
 }
 

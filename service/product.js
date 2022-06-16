@@ -60,4 +60,9 @@ router.post("/getProductDetail", (req, res) =>{
     }
 });
 
+router.use("/", (req, res, next)=>{
+    //route not found
+    next();
+});
+
 module.exports = router;

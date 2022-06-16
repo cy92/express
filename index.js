@@ -23,6 +23,7 @@ app.use('/', (req, res, next)=>{
     let m = (d.getMonth()+ 1).toString().padStart(2,"0");
     let dy = d.getDate().toString().padStart(2,"0");
     req.id = y+m+dy+"-"+Date.now();
+    fl.trxLog(req);
     next();
 });
 
@@ -30,6 +31,11 @@ app.use('/office', require("./service/office"));
 app.use('/product', require("./service/product"));
 app.use('/customer', require('./service/customer'));
 app.use('/order', require("./service/order"));
+
+app.use((error, req, res, next) => {
+    //not route found
+    next();
+});
 
 app.listen(port, ()=>{
     console.log("Express server started with port : " +port);

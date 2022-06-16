@@ -57,5 +57,9 @@ router.post("/getCustomerDetail", (req , res) =>{
     }
 });
 
+router.use("/", (req, res, next)=>{
+    //route not found
+    next();
+});
 
 module.exports = router;
