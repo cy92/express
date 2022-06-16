@@ -1,11 +1,11 @@
 # express
 Sample Express backend RESTful api source code
 
-#Installation
-#Database (MYSQL)
+# Installation
+## Database (MYSQL)
 Import or execute the mysqlsampledatabase.sql into mysql server. A sample database will be created.
 
-#ExpressJs
+## ExpressJs
 1) npm install
 2) Access and open /config/config.json
 3) Add database information as folo:
@@ -15,5 +15,6 @@ Import or execute the mysqlsampledatabase.sql into mysql server. A sample databa
    - dbname (database name)
 5) npm run dev
 
-
+## Postman
+Import Sample test.postman_collection.json into postman for list of sample api
 
